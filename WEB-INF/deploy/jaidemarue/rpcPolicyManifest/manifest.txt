@@ -1,3 +1,0 @@
-# Module jaidemarue
-# RPC service class, partial path of RPC policy file
-com.rue.servlet.client.GreetingService, 2F48CE4445337CBD4A918D510CE312BF.gwt.rpc
