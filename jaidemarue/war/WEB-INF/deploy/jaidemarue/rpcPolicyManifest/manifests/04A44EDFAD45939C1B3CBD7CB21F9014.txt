@@ -1,0 +1,2 @@
+serviceClass: com.rue.servlet.client.GreetingService
+path: 2F48CE4445337CBD4A918D510CE312BF.gwt.rpc
