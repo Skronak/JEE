@@ -2,18 +2,12 @@
 
 
 /** Example rules used by the template application (remove for your app) */
-h1 {
+#principal-h1 {
   font-size: 3em;
   font-weight: bold;
   color: #FEFEFE;
   margin: 40px 0px 70px;
   text-align: center;
-}
-
-h3 {
-	text-align: center;
-	color: #FEFEFE;
-	text-transform: lowercase;
 }
 
 .sendButton {
@@ -59,7 +53,6 @@ body {
 	margin: 0;
 	padding: 0;
 	font-family:'Abel', arial, serif; 
-	text-transform: uppercase;
     background:#313131 url(../img/fond.jpeg) no-repeat top center;
 }
 
@@ -80,6 +73,7 @@ body {
 #conteneur-menu2 ul li {
 	list-style: none;
 	padding: 0px;
+		text-transform: uppercase;
 }
 
 #conteneur-menu2 ul li a {
@@ -105,4 +99,10 @@ body {
     -webkit-transition: all .5s; 
     -o-transition: all .5s; 
     transition: all .5s;
+}
+
+#content{
+  width:300px;
+  height:100%;
+  color:black;
 }

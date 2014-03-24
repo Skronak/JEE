@@ -35,7 +35,7 @@
 		</p>
 	</form>
 
-	<h1>Liste des alértes :</h1>
+	<h1>Liste des alertes :</h1>
 	<p>
 		<em>(et c'est stocké dans le Datastore !)</em>
 	</p>

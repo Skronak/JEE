@@ -13,8 +13,6 @@
 		<!-- Latest compiled and minified JavaScript -->
 		<script src="//netdna.bootstrapcdn.com/bootstrap/3.1.1/js/bootstrap.min.js"></script>
 		<script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?sensor=false&language=fr"></script>
-		<!-- Script de geolocalisation-->
-		<script type="text/javascript" src="js/geoloc.js"></script>
 		<!-- Script de fenetres modals A INCLURE-->
 		<script src="js/jquery.js"></script>   
 	</head>

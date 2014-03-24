@@ -7,6 +7,10 @@
 <html>
 <head>
 	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+	<!-- Script de googlemap-->
+	<script type="text/javascript" src="js/afficher.js"></script>
+	<script type="text/javascript" src="js/jquery.js"></script>
+	<link rel="stylesheet" href="Jaidemarue.css">
 	<title>Les alertes</title>
 </head>
 <body>
@@ -14,7 +18,7 @@
 	<div id="map-canvas" style="float:top; position:absolute; height:63%;width:100%;z-index: 1;"></div>
 	
 	<!-- Affichage des alertes -->      		
-	<div style="background-color:white;margin-top:43%;float:bottom; position:relative; height:40%;width:100%;z-index:2">
+	<div style="background-color:white;margin-top:40%;float:bottom; position:absolute; height:100%;width:100%;z-index:2">
 	<h1>Liste des alertes :</h1>
 	<%
 		List<Entity> alertes = (List<Entity>) request

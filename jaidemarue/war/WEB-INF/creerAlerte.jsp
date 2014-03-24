@@ -1,6 +1,7 @@
 <%@ page pageEncoding="UTF-8" %>
 <jsp:include page="menu.jsp"/>
-	
+<!-- Script de geolocalisation-->
+<script type="text/javascript" src="js/geoloc.js"></script>
 
 	<!-- Integration de la google map -->      		
 	<div id="map-canvas" style="float:top; position:absolute; height:63%;width:100%;z-index: 1;"></div>

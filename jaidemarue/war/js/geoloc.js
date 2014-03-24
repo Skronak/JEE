@@ -13,7 +13,7 @@ function initialiserCarte() {
   var mapOptions = {
     zoom: 15,
     center: Nantes,
-    styles: [{featureType:'all',stylers:[{saturation:-100},{gamma:0.50}]}],
+ //   styles: [{featureType:'all',stylers:[{saturation:-100},{gamma:0.50}]}],
     mapTypeId: google.maps.MapTypeId.ROADMAP
   };
   map = new google.maps.Map(document.getElementById('map-canvas'),
