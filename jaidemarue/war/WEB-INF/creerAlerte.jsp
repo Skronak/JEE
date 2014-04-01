@@ -1,22 +1,29 @@
 <%@ page pageEncoding="UTF-8" %>
+<%@ page import="com.google.appengine.api.blobstore.*" %>
+<% BlobstoreService blobstoreService = BlobstoreServiceFactory.getBlobstoreService();%>
 <jsp:include page="menu.jsp"/>
+
 <!-- Script de geolocalisation-->
 <script type="text/javascript" src="js/geoloc.js"></script>
 
 	<!-- Integration de la google map -->      		
-	<div id="map-canvas" style="float:top; position:absolute; height:63%;width:100%;z-index: 1;"></div>
+	<div id="map-canvas" style="position:absolute; height:100%;width:100%;z-index: 1;"></div>
 	
 	<!-- Integration du formulaire --> 
-	<div style="background-color:white;margin-top:43%;float:bottom; position:relative; height:40%;width:100%;z-index:2">
+	<div style="background-color:white;float:left; position:relative; height:100%;width:36%;z-index:2">
 		<p class="bg-danger">${ form.resultat }</p>
-			<form method="post" action="<c:url value="/alerte"/>">
+		<form action="<%= blobstoreService.createUploadUrl("/alerte") %>" method="post" enctype="multipart/form-data">
 	               <fieldset>
 	                    <c:import url="inc_alerte_form.jsp" />
 	                </fieldset>
-	                <input type="submit" class="btn btn-primary" value="Valider"/>
-	                <input type="reset" class="btn btn-default" value="Remettre à zéro" /> <br />
-	        </form>
-	  		<span id="text_latlng">Pas de coordonnée actuelle</span>
+	                <button type="submit" class="btn btn-primary">
+					  <i class="glyphicon glyphicon-send icon-withe"></i>  Envoyer
+					</button>
+					<button type="reset" class="btn btn-default">
+					  <i class="glyphicon glyphicon-remove-circle"></i>  Remettre à zéro
+					</button>
+	     </form>
+	  		<span id="text_latlng" hidden="hidden">Pas de coordonnée actuelle</span>
 	</div>
 
 </body>

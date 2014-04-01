@@ -1,35 +1,62 @@
 package com.rue.servlet;
 
 import java.io.IOException;
-import java.util.Date;
 import java.util.List;
 
 import javax.servlet.ServletException;
 import javax.servlet.http.*;
 
-import com.google.appengine.api.datastore.*;
-import com.google.appengine.api.datastore.Query.SortDirection;
+import com.google.appengine.api.datastore.KeyFactory;
 import com.google.appengine.api.users.UserService;
 import com.google.appengine.api.users.UserServiceFactory;
 
+import javax.jdo.PersistenceManager;
+
+import com.google.appengine.api.users.User;
+import com.rue.bean.Alerte;
+import com.rue.pmf.PMF;
+
 public class MesAlertes extends HttpServlet {
+	public void doGet( HttpServletRequest request, HttpServletResponse response ) throws ServletException, IOException{
+		response.setHeader("Expires", "Sat, 6 May 1995 12:00:00 GMT");
+	    UserService userService = UserServiceFactory.getUserService();
+	    User user = userService.getCurrentUser();
+	    if (user != null) {
+	        PersistenceManager pm = PMF.get().getPersistenceManager();        
+	        
+	        String query =  "select from " + Alerte.class.getName() +
+	           " where owner == ownerParam" +
+	           " parameters com.google.appengine.api.users.User ownerParam" +
+	           " order by date";
+            try{           
+    	        List<Alerte> alertes = (List<Alerte>)pm.newQuery(query).execute(user);
+    	        System.out.println(alertes);
+    	        request.setAttribute("alertes", alertes);
+            }
+            finally{
+                pm.close();
+            }
 
-	public void doGet(HttpServletRequest req, HttpServletResponse resp) {
-		try {
-			DatastoreService datastore = DatastoreServiceFactory.getDatastoreService();
-			UserService userService = UserServiceFactory.getUserService();
-
-			// Demande tous les 5 derniers messages triés par date décroissante
-			Query q = new Query("Alerte").addSort("date", SortDirection.DESCENDING);
-			List<Entity> results = datastore.prepare(q).asList(FetchOptions.Builder.withLimit(5));
-
-			req.setAttribute("alertes", results);
-			this.getServletContext().getRequestDispatcher("/WEB-INF/mesalertes.jsp").forward(req, resp);
-		} catch (ServletException e) {
-			e.printStackTrace();
-		} catch (IOException e) {
-			e.printStackTrace();
-		}
+	    }
+	    
+		this.getServletContext().getRequestDispatcher( "/WEB-INF/mesalertes.jsp" ).forward( request, response );
 	}
-
+	
+	public void doPost( HttpServletRequest request, HttpServletResponse response ) throws ServletException, IOException{
+		PersistenceManager pm =  PMF.get().getPersistenceManager();
+		try {
+			pm.currentTransaction().begin();
+			Alerte alerte = pm.getObjectById(Alerte.class,  KeyFactory.stringToKey(request.getParameter("id")));
+			pm.deletePersistent(alerte);
+			pm.currentTransaction().commit();
+		} catch (Exception ex) {
+			pm.currentTransaction().rollback();
+			throw new RuntimeException(ex);
+		} finally {
+			pm.close();
+		}
+			this.getServletContext().getRequestDispatcher( "/WEB-INF/deleteAlerte.jsp" ).forward( request, response );
+	}
 }
+
+

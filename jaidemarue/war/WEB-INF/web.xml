@@ -12,57 +12,65 @@
 			<include-prelude>/WEB-INF/taglibs.jsp</include-prelude>
 		</jsp-property-group>
 	</jsp-config>
+
 	
-  <servlet>
-    <servlet-name>log</servlet-name>
-    <servlet-class>com.rue.servlet.Log</servlet-class>
-  </servlet>
-  <servlet>
-    <servlet-name>view</servlet-name>
-    <servlet-class>com.rue.servlet.ViewMap</servlet-class>
-  </servlet>
-  <servlet>
-    <servlet-name>creerAlerte</servlet-name>
-    <servlet-class>com.rue.servlet.Form</servlet-class>
-  </servlet>
-    <servlet>
-    <servlet-name>mesAlertes</servlet-name>
-    <servlet-class>com.rue.servlet.MesAlertes</servlet-class>
-  </servlet>
-  <servlet>
-    <servlet-name>FormServlet</servlet-name>
-    <servlet-class>com.rue.servlet.Form</servlet-class>
-  </servlet>
-  
-  <servlet-mapping>
-    <servlet-name>log</servlet-name>
-    <url-pattern>/log</url-pattern>
-  </servlet-mapping>
-  <servlet-mapping>
-    <servlet-name>view</servlet-name>
-    <url-pattern>/view</url-pattern>
-  </servlet-mapping>
- <servlet-mapping>
-    <servlet-name>creerAlerte</servlet-name>
-    <url-pattern>/creerAlerte</url-pattern>
-  </servlet-mapping>
-   <servlet-mapping>
-    <servlet-name>mesAlertes</servlet-name>
-    <url-pattern>/mesAlertes</url-pattern>
-  </servlet-mapping>
-  <servlet-mapping>
-    <servlet-name>FormServlet</servlet-name>
-    <url-pattern>/alerte</url-pattern>
-  </servlet-mapping>
-  
-      <session-config>
+	<servlet>
+		<servlet-name>creerAlerte</servlet-name>
+		<servlet-class>com.rue.servlet.Form</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>creerAlerte</servlet-name>
+		<url-pattern>/creerAlerte</url-pattern>
+	</servlet-mapping>
+	<servlet>
+		<servlet-name>mesAlertes</servlet-name>
+		<servlet-class>com.rue.servlet.MesAlertes</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>mesAlertes</servlet-name>
+		<url-pattern>/mesAlertes</url-pattern>
+	</servlet-mapping>
+	<servlet>
+		<servlet-name>FormServlet</servlet-name>
+		<servlet-class>com.rue.servlet.Form</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>FormServlet</servlet-name>
+		<url-pattern>/alerte</url-pattern>
+	</servlet-mapping>
+	<servlet>
+		<servlet-name>LesAlertes</servlet-name>
+		<servlet-class>com.rue.servlet.LesAlertes</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>LesAlertes</servlet-name>
+		<url-pattern>/lesalertes</url-pattern>
+	</servlet-mapping>
+	<servlet>
+		<servlet-name>AddVote</servlet-name>
+		<servlet-class>com.rue.servlet.AddVote</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>AddVote</servlet-name>
+		<url-pattern>/addVote</url-pattern>
+	</servlet-mapping>
+		<servlet>
+		<servlet-name>Preference</servlet-name>
+		<servlet-class>com.rue.servlet.Preference</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>Preference</servlet-name>
+		<url-pattern>/preference</url-pattern>
+	</servlet-mapping>
+
+  <session-config>
         <session-timeout>
             30
         </session-timeout>
-    </session-config>
+  </session-config>
   <!-- Default page to serve -->
   <welcome-file-list>
-    <welcome-file>Jaidemarue.html</welcome-file>
+    <welcome-file>Jaidemarue.jsp</welcome-file>
   </welcome-file-list>
 
 </web-app>

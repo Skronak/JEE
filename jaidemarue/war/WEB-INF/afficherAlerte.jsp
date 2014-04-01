@@ -12,13 +12,14 @@
     </head>
     <body>
         <div id="corps">
-		    <p class="bg-success">${ form.resultat }</p>
-            <p>Auteur : <c:out value="${ alerte.auteur }"/></p>
+		    <div class="alert alert-success"><h2 class="bg-success">${ form.resultat }</h2></div>
+	    	<div style="text-align:center;size:20%;"><img src="/img/gok.png" alt="" /></div>
+	    	<hr/>
+		    <p>Owner : <c:out value="${ alerte.owner }"/></p>
             <p>Adresse : <c:out value="${ alerte.adresse }"/></p>
             <p>Date : <c:out value="${ alerte.date }"/></p>
             <p>Type : <c:out value="${ alerte.type }"/></p>
             <p>Image : <c:out value="${ alerte.image }"/></p>
-            <p>Statut : <c:out value="${ alerte.statut }"/></p>
             <p>Priorité : <c:out value="${ alerte.priorite }"/></p>
             <p>Commentaire : <c:out value="${ alerte.commentaire }"/></p>
         </div>

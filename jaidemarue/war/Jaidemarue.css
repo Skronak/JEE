@@ -2,17 +2,39 @@
 
 
 /** Example rules used by the template application (remove for your app) */
-#principal-h1 {
+h1 {
   font-size: 3em;
   font-weight: bold;
-  color: #FEFEFE;
   margin: 40px 0px 70px;
   text-align: center;
+}
+
+hr {
+   width: 90%;
+   background-color: white; 
+   height: 1px;
 }
 
 .sendButton {
   display: block;
   font-size: 16pt;
+}
+.go{
+text-align:center;
+}
+
+.gauche {
+    float:left;
+    margin-left:30%;
+    position:relative;
+    width:60%;
+}
+.droite {
+    margin-left:50%;
+    position:absolute;
+}
+.middle{
+	text-align:center;
 }
 
 /** Most GWT widgets already have a style name defined */
@@ -53,7 +75,6 @@ body {
 	margin: 0;
 	padding: 0;
 	font-family:'Abel', arial, serif; 
-    background:#313131 url(../img/fond.jpeg) no-repeat top center;
 }
 
 #conteneur-menu2 {
@@ -73,7 +94,6 @@ body {
 #conteneur-menu2 ul li {
 	list-style: none;
 	padding: 0px;
-		text-transform: uppercase;
 }
 
 #conteneur-menu2 ul li a {
@@ -101,8 +121,40 @@ body {
     transition: all .5s;
 }
 
-#content{
-  width:300px;
-  height:100%;
-  color:black;
+// On affiche en ligne la div contenant l'input et le texte
+div#infobulle {
+    display: inline;
 }
+ 
+// Mais on cache le texte
+div#infobulle span {
+    display: none;
+}
+ 
+// Et au survol de la partie visible de la div (autrement dit de l'input), on affiche le texte en bloc cette fois-ci
+div#infobulle:hover p {
+    display: block;
+    width: 100px;
+    height: auto;
+    padding: 5px;
+    position: absolute;
+    border: 1px solid black;
+    margin: -20px auto auto 630px;
+    background: #5ba1cf;
+    border-radius: 6px;
+}
+.thumbnail img {
+	width:410px;
+	height:300px;
+}
+.thumbnail div {
+	width:410px;
+	height:310px;
+	background-color:rgb(245,245,245);
+}
+#mesalertes{
+	position: absolute; 
+	width:150px;
+	height:200px;
+}
+	

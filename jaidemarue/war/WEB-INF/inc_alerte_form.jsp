@@ -2,33 +2,34 @@
 <%@ page import="java.util.Date"%>
 
 <h1>Depot d'une nouvelle alerte</h1>
-<label for="adresseAlerte">Adresse de l'alerte <span
-	class="requis">*</span></label>
-<input type="text" id="adresseAlerte" name="adresseAlerte"
-	value="<c:out value="${alerte.adresse}"/>" size="30" maxlength="60" />
+<hr/>
+<label for="adresseAlerte">Adresse de l'alerte <span class="requis">*</span></label>
+<input type="text" id="adresseAlerte" name="adresseAlerte" value="<c:out value="${alerte.adresse}"/>" size="30" maxlength="60" />
 <span class="erreur">${form.erreurs['adresseAlerte']}</span>
-<br />
-<input type="button" value="Localiser" onclick="TrouverAdresse();"/>
-<br />
+<input type="button" class="btn btn-info btn-large" value="Localiser" onclick="TrouverAdresse();"/>
+<hr/>
 		
 <label for="typeAlerte">Type <span class="requis">*</span></label>
 <select name="typeAlerte" value="<c:out value="${alerte.type}"/>"
 	size="1">
-	<option>Dégradation
-	<option>Tag
+	<option>Dégradation de la voie publique
+	<option>Vandalisme
+	<option>Voiture mal garée
 	<option>Usure
+	<option>Véhicule abandonné
+	<option>Eclairage publique
+	<option>Dechets
+	<option>Chaussée détériorée
 </select>
 <span class="erreur">${form.erreurs['typeAlerte']}</span>
-<br />
+<hr/>
 
-<label for="imageAlerte">Image <span class="requis">*</span></label>
-<input type="file" id="imageAlerte" name="imageAlerte"
-	value="<c:out value="${alerte.image}"/>" size="30" maxlength="30" />
-<span class="erreur">${form.erreurs['imageAlerte']}</span>
-<br />
+<label for="uploadedFile">Fichier à envoyer* : </label>
+<input type="file" name="uploadedFile" id="uploadedFile"/>
+<hr/>
 
 
-<label for="prioriteAlerte">Priorité <span class="requis">*</span></label>
+<label for="prioriteAlerte">Priorité</label>
 <select name="prioriteAlerte"
 	value="<c:out value="${alerte.priorite}"/>" size="1">
 	<option>Faible
@@ -36,11 +37,12 @@
 	<option>Haute
 </select>
 <span class="erreur">${form.erreurs['prioriteAlerte']}</span>
-<br />
+<hr/>
 
 <label for="prioriteAlerte">Commentaire</label>
 <input type="text" id="commentaireAlerte" name="commentaireAlerte"
-	value="<c:out value="${alerte.commentaire}"/>" size="75"
+	value="<c:out value="${alerte.commentaire}"/>" size="65%"
 	maxlength="400" />
 <span class="erreur">${form.erreurs['commentaireAlerte']}</span>
-<br />
+<hr/>
+<input type="text" id="coordAlerte" name="coordAlerte" value="<c:out value="${alerte.coord}"/>" hidden="hidden"/>

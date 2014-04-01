@@ -8,6 +8,7 @@
 		<%@ page import="com.google.appengine.api.users.*"%>
 		<!-- Latest compiled and minified CSS -->
 		<link rel="stylesheet" href="//netdna.bootstrapcdn.com/bootstrap/3.1.1/css/bootstrap.min.css">
+   		<link rel="stylesheet" href="Jaidemarue.css" type="text/css" media="screen"/>
 		<!-- Optional theme -->
 		<link rel="stylesheet" href="//netdna.bootstrapcdn.com/bootstrap/3.1.1/css/bootstrap-theme.min.css">
 		<!-- Latest compiled and minified JavaScript -->
@@ -20,21 +21,27 @@
 		<div id="header">
 			<nav class="navbar navbar-inverse" role="navigation" style="margin-bottom:0px;">
 			<ul class="nav navbar-nav">
-				<li class="active"><a href="/jaidemarue.html"><span
+				<li class="active"><a href="/Jaidemarue.html"><span
 						class="glyphicon glyphicon-home"> Home</span></a></li>
 				<li><a href="/creerAlerte"><span
 						class="glyphicon glyphicon-envelope"> Poster une alerte</span></a></li>
-				<li><a href="/mesAlertes"><span
-						class="glyphicon glyphicon-folder-open"> Mes alertes</span></a></li>
-				<li><a href="/map"><span class="glyphicon glyphicon-globe">
-							Map</span></a></li>
+				<li>
+				<%if (userService.getCurrentUser() != null) {%>
+					<li><a href="/mesAlertes"><span
+						class="glyphicon glyphicon-folder-open"> Mes alertes</span></a>
+					</li>
+				<%}%>	
+				<li><a href="/lesalertes"><span class="glyphicon glyphicon-globe">
+							Toutes les alertes</span></a></li>
 							
 				<%if (userService.getCurrentUser() == null) {%>
 					<li><a href="<%= userService.createLoginURL("/creerAlerte") %>"><span class="glyphicon glyphicon-user">
 							Login</span></a></li>
 				<%} else {%>		
-					<li><a href="<%=userService.createLogoutURL("/creerAlerte")%>"><span class="glyphicon glyphicon-user"><%=userService.getCurrentUser().getNickname()%></span></a></li>
-				<% } %>			
+					<li><a href="<%=userService.createLogoutURL("/creerAlerte")%>"><span class="glyphicon glyphicon-user">Deconnexion</span></a></li>
+					<li><jsp:include page="/WEB-INF/preference.jsp" /></li>			
+				<% } %>
+
 			</ul>
 			</nav>
 		</div>

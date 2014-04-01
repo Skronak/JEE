@@ -1,62 +1,94 @@
 package com.rue.servlet;
 
+import com.google.appengine.api.blobstore.*;
+import com.google.appengine.api.images.*;
+
 import java.io.IOException;
-import java.util.Date;
+import java.util.List;
+import java.util.Map;
+
+import javax.jdo.PersistenceManager;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+
 import com.google.appengine.api.datastore.DatastoreService;
 import com.google.appengine.api.datastore.DatastoreServiceFactory;
-import com.google.appengine.api.datastore.Entity;
-import com.bean.Alerte;
-import com.bean.form_alerte;
-import com.google.appengine.api.datastore.*;
-import com.google.appengine.api.datastore.Query.SortDirection;
+import com.rue.bean.Alerte;
+import com.rue.bean.form_alerte;
+import com.rue.pmf.PMF;
+import com.google.appengine.api.users.*;
 
 public class Form extends HttpServlet {
 
-public static final String ATT_ALERTE = "alerte";
-    public static final String ATT_FORM = "form";
-    public static final String VUE_SUCCES = "/WEB-INF/afficherAlerte.jsp";
-    public static final String VUE_FORM = "/WEB-INF/creerAlerte.jsp";
+		public static final String ATT_ALERTE = "alerte";
+		    public static final String ATT_FORM = "form";
+		    public static final String VUE_SUCCES = "/WEB-INF/afficherAlerte.jsp";
+		    public static final String VUE_FORM = "/WEB-INF/creerAlerte.jsp";
+		    public static final String VUE_NONCONNECTE = "/WEB-INF/loggin.jsp";
+		    UserService userService = UserServiceFactory.getUserService();
+		    
+		    public void doGet( HttpServletRequest request, HttpServletResponse response ) throws ServletException, IOException {
+		    	if (userService.getCurrentUser() == null) { 
+		    	   	/* ï¿½ la rï¿½ception d'une requï¿½te GET, simple affichage du formulaire */
+			        this.getServletContext().getRequestDispatcher( VUE_NONCONNECTE ).forward( request, response );
+			    } else {
+			        this.getServletContext().getRequestDispatcher( VUE_FORM ).forward( request, response );
+			    }
+		    }
 
-    public void doGet( HttpServletRequest request, HttpServletResponse response ) throws ServletException, IOException {
-        /* À la réception d'une requête GET, simple affichage du formulaire */
-        this.getServletContext().getRequestDispatcher( VUE_FORM ).forward( request, response );
-    }
+		    public void doPost( HttpServletRequest request, HttpServletResponse response ) throws ServletException, IOException {
+		     DatastoreService datastore = DatastoreServiceFactory.getDatastoreService();
+		     BlobstoreService blobstoreService = BlobstoreServiceFactory.getBlobstoreService();
+		     ImagesService imagesService = ImagesServiceFactory.getImagesService();
 
-    public void doPost( HttpServletRequest request, HttpServletResponse response ) throws ServletException, IOException {
-     DatastoreService datastore = DatastoreServiceFactory.getDatastoreService();
-        
-     /* Préparation de l'objet formulaire */
-        form_alerte form = new form_alerte();
+		     //========================================================
+		     //					Traitement de l'image
+		     //========================================================
+		     // RÃ©cupÃ¨re une Map de tous les champs d'upload de fichiers
+		     Map<String, List<BlobKey>> blobs = blobstoreService.getUploads(request);
+		     // RÃ©cupÃ¨re la liste des fichiers uploadÃ©s dans le champ "uploadedFile"
+		     List<BlobKey> blobKeys = blobs.get("uploadedFile");
+		     // RÃ©cupÃ¨re la clÃ© identifiant du fichier uploadÃ© dans le Blobstore (Ã  sauvegarder)
+		     //String cleFichierUploade = blobKeys.get(0).getKeyString();
+		     String urlImage = imagesService.getServingUrl(ServingUrlOptions.Builder.withBlobKey(blobKeys.get(0)));   
+		     
+		     
+		     /* Prï¿½paration de l'objet formulaire */
+		        form_alerte form = new form_alerte();
 
-        /* Traitement de la requête et récupération du bean en résultant */
-        Alerte alerte = form.creerAlerte( request );
+		        /* Traitement de la requï¿½te et rï¿½cupï¿½ration du bean en rï¿½sultant */
+		        Alerte alerte = form.creerAlerte( request );
+		        alerte.setImage(urlImage);
 
-        /* Ajout du bean et de l'objet métier à l'objet requête */
-        request.setAttribute( ATT_ALERTE, alerte );
-        request.setAttribute( ATT_FORM, form );
+		        /* Ajout du bean et de l'objet mï¿½tier ï¿½ l'objet requï¿½te */
+		        request.setAttribute( ATT_ALERTE, alerte );
+		        request.setAttribute( ATT_FORM, form );
 
-        if ( form.getErreurs().isEmpty() ) {
-            /* Si aucune erreur, alors affichage de la fiche récapitulative */
-            this.getServletContext().getRequestDispatcher( VUE_SUCCES ).forward( request, response );
-           
-           //creation de l'objet pour le stoker dans le datastore
-           Entity alt = new Entity("Alerte");
-           alt.setProperty("auteur", alerte.getAuteur());
-           alt.setProperty("adresse", alerte.getAdresse());
-           alt.setProperty("date", alerte.getDate());
-           alt.setProperty("type", alerte.getType());
-           alt.setProperty("image", alerte.getImage());
-           alt.setProperty("statut", alerte.getStatut());
-           alt.setProperty("priorite", alerte.getPriorite());
-           alt.setProperty("commentaire", alerte.getCommentaire());
-           datastore.put(alt);
-        } else {
-            /* Sinon, ré-affichage du formulaire de création avec les erreurs */
-            this.getServletContext().getRequestDispatcher( VUE_FORM ).forward( request, response );
-        }
-    }
-}
+		        if ( form.getErreurs().isEmpty() ) {
+		            /* Si aucune erreur, alors affichage de la fiche rï¿½capitulative */
+		            //UTILE POUR AFFICHAGE MARKERS DANS JS 
+		            /*
+		        	String coord =alerte.getCoord();
+		            coord = coord.replace("(","") ;
+		            coord = coord.replace(")","") ;
+		            String[] latlong= coord.split(","); 
+		            */
+		            PersistenceManager pm = PMF.get().getPersistenceManager();
+		            try{           
+		                //sauvegarde notre objet "alerte"
+		                pm.makePersistent(alerte);
+		            }
+		            finally{
+		                pm.close();
+		            }
+		           
+		            this.getServletContext().getRequestDispatcher( VUE_SUCCES ).forward( request, response );
+		                       
+		        } else {
+		            /* Sinon, rï¿½-affichage du formulaire de crï¿½ation avec les erreurs */
+		            this.getServletContext().getRequestDispatcher( VUE_FORM ).forward( request, response );
+		        }
+		    }
+		}

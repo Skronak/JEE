@@ -37,6 +37,7 @@ function initialize() {
         marker = new google.maps.Marker({
             position: position,
             map: map,
+            animation : google.maps.Animation.DROP,
             title: markers[i][0]
         });
 

@@ -85,6 +85,7 @@ function codeLatLng() {
 	        infowindow.setContent(results[0].formatted_address);
 	        infowindow.open(map, marker);
 	    	document.getElementById('adresseAlerte').value=results[0].formatted_address;  
+	    	document.getElementById('coordAlerte').value=latlng;
 	      } else {
 	        alert('No results found');
 	      }
