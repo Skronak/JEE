@@ -14,6 +14,11 @@
 	<link rel="stylesheet" href="Jaidemarue.css">
 	<title>Les alertes</title>
 </head>
+<!-- Remplacer le scriplet par JSTL que l'on vient de voir !!!! -->
+<!-- <c:forEach items="${alerte}" var="news"> -->
+<!-- 	{alerte.vote}-->
+<!-- </c:forEach> -->
+
 <body>
 	<!-- Integration de la google map -->      		
 	<div id="map-canvas" style="float:top; position:absolute; height:63%;width:100%;z-index: 1;"></div>
@@ -22,6 +27,8 @@
 	<div style="background-color:white;margin-top:40%;float:bottom; position:absolute; height:100%;width:100%;z-index:2">
 		<h1>Liste des alertes :</h1>	
 		<%	
+			UserService userService = UserServiceFactory.getUserService();
+        		User user = userService.getCurrentUser();
 			int a=0;
 			List<Alerte> alertes = (List<Alerte>) request.getAttribute("alertes");
 			for (Alerte alerte : alertes) {
@@ -68,8 +75,16 @@
 			        <p style="text-align: left;float:left;margin-right:5%;"><a href="#" class="btn btn-primary" role="button">Localiser</a></p>
 			        
 			        <!--  On test l'existence du cookie sur le vote pour savoir si on a deja voté -->
-			        <p style="text-align: left;"><a href="/addVote?id=<%=alerte.getKey()%>" class="btn btn-Info" role="button">+1</a></span>
-			        <!-- Fin du test -->
+				<% 
+				Bool affiche =true;
+				for(int i = 0; i <= alerte.GetVote.lenght; i++){
+					if alerte.GetVote!=user {
+						affiche=false
+					}
+				}
+				If affiche {%>
+				        <p style="text-align: left;"><a href="/addVote?id=<%=alerte.getKey()%>" class="btn btn-Info" role="button">+1</a></span>
+				<%}%>				        
 			        </p>
 			      </div>
 			    </div>
