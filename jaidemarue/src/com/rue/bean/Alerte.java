@@ -37,7 +37,7 @@ public class Alerte implements Serializable{
 	@Persistent
 	private int vote=0;
 	@Persistent
-	private voteurs = newArrayList();
+	private votant = newArrayList();
 	
 	public int getVote() {
 		return vote;
@@ -101,10 +101,10 @@ public class Alerte implements Serializable{
     	public void setOwner(User owner){
         	this.owner = owner;
     	}
-    	public ArrayList<User> getVoteurs() {
-		return voteurs;
+    	public ArrayList<User> getVotant() {
+		return votant;
 	}
-    	public void setVoteurs(User owner){
-        	voteurs.add(owner);
+    	public void setVotant(User owner){
+        	votant.add(owner);
     	}
 }
