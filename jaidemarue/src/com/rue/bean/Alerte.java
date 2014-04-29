@@ -107,4 +107,9 @@ public class Alerte implements Serializable{
     	public void setVotant(User owner){
         	votant.add(owner);
     	}
+    	public String toMap() {
+		String a= coord;
+		a=a.substring(1,a.length()-1);
+		return "[adresse, type, owner, image, a]";		
+	}
 }
