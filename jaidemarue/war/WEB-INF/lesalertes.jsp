@@ -31,10 +31,10 @@
 			String ok="";
 			int temp=0;
 			String coord;
-			<!-- J'AVOUE C'EST MOCHE MAIS CA MARCHE --> 
+			//J'AVOUE C'EST MOCHE MAIS CA MARCHE  
 			
 			for (Alerte alerte : alertes) {
-				<!-- CETTE LIGNE POURRAIT REMPLACER TT CE QU'IL Y A DANS CE FOR (en mieux) -->   
+				// CETTE LIGNE POURRAIT REMPLACER TT CE QU'IL Y A DANS CE FOR (en mieux)    
 				//ok=ok+alerte.toMap();
 				if(temp==0){
 					coord= alerte.getCoord();
