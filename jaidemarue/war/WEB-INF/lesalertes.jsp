@@ -32,8 +32,8 @@
 			int a=0;
 			List<Alerte> alertes = (List<Alerte>) request.getAttribute("alertes");
 			
-			String alertes2 = (String)request.getAttribute("Alertes2");%>
-			<a href=# onClick="alert('<%alertes2%>')>CLICK ICI POUR AFFICHER LE CONTENU DU STRING</a>
+			String alertes2 = (String)request.getAttribute("alertes2");%>
+			<a href=# onClick="alert('<%=alertes2%>')>CLICK ICI POUR AFFICHER LE CONTENU DU STRING</a>
 						
 <%			for (Alerte alerte : alertes) {
 				a++;
