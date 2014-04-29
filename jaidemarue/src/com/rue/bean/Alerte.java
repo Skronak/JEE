@@ -38,6 +38,8 @@ public class Alerte implements Serializable{
 	private int vote=0;
 	@Persistent
 	private votant = newArrayList();
+	@Persistent
+	private String toMap;
 	
 	public int getVote() {
 		return vote;
@@ -107,9 +109,8 @@ public class Alerte implements Serializable{
     	public void setVotant(User owner){
         	votant.add(owner);
     	}
-    	public String toMap() {
-		String a= coord;
-		a=a.substring(1,a.length()-1);
-		return "[adresse, type, owner, image, a]";		
+    	public void getToMap() {
+//		a=a.substring(1,a.length()-1);
+		return ccord;		
 	}
 }
