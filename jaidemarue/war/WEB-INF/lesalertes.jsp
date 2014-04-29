@@ -2,6 +2,9 @@
 <%@ page import="com.rue.bean.Alerte" %>
 <%@ page import="com.google.appengine.api.datastore.*"%>
 <%@ page import="java.util.List"%>
+<%@ page import="com.google.appengine.api.users.UserService"%>
+<%@ page import="com.google.appengine.api.users.UserServiceFactory"%>
+<%@ page import="com.google.appengine.api.users.User"%>
 <jsp:include page="menu.jsp" />
 
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
@@ -18,22 +21,48 @@
 <!-- <c:forEach items="${alerte}" var="news"> -->
 <!-- 	{alerte.vote}-->
 <!-- </c:forEach> -->
+		<%	
+			UserService userService = UserServiceFactory.getUserService();
+        	User user = userService.getCurrentUser();
+			int a=0;
+			List<Alerte> alertes = (List<Alerte>) request.getAttribute("alertes");
 
-<body>
+			String alertes2 = (String)request.getAttribute("alertes2");
+			String ok="";
+			int temp=0;
+			String coord;
+			<!-- J'AVOUE C'EST MOCHE MAIS CA MARCHE --> 
+			
+			for (Alerte alerte : alertes) {
+				<!-- CETTE LIGNE POURRAIT REMPLACER TT CE QU'IL Y A DANS CE FOR (en mieux) -->   
+				//ok=ok+alerte.toMap();
+				if(temp==0){
+					coord= alerte.getCoord();
+					int longueur=coord.length()-1;
+					coord=coord.substring(1,longueur);
+					ok=ok+"["+coord+"]";
+				}
+				else{
+					coord= alerte.getCoord();
+					int longueur=coord.length()-1;
+					coord=coord.substring(1,longueur);
+					ok=ok+",["+coord+"]";
+				}
+				temp++;
+			}%>
+
+<body onload="initialize(ok)">
+
 	<!-- Integration de la google map -->      		
 	<div id="map-canvas" style="float:top; position:absolute; height:63%;width:100%;z-index: 1;"></div>
+	
+	<!-- PR TESTER :::A METTRE ligne 55 (AVANT LA GOOGLE MAP DANS LE CODE) + ENLEVER onload="initialize(ok)" du body  -->
+	<a href=# onClick="alert('<%=ok%>')>CLICK ICI POUR AFFICHER LE CONTENU DU STRING</a>
 	
 	<!-- Affichage des alertes -->      		
 	<div style="background-color:white;margin-top:40%;float:bottom; position:absolute; height:100%;width:100%;z-index:2">
 		<h1>Liste des alertes :</h1>	
-		<%	
-			UserService userService = UserServiceFactory.getUserService();
-        		User user = userService.getCurrentUser();
-			int a=0;
-			List<Alerte> alertes = (List<Alerte>) request.getAttribute("alertes");
-			
-			String alertes2 = (String)request.getAttribute("alertes2");%>
-			<a href=# onClick="alert('<%=alertes2%>')>CLICK ICI POUR AFFICHER LE CONTENU DU STRING</a>
+
 						
 <%			for (Alerte alerte : alertes) {
 				a++;
