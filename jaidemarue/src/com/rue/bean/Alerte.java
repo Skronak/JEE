@@ -111,6 +111,6 @@ public class Alerte implements Serializable{
     	}
     	public void getToMap() {
 //		a=a.substring(1,a.length()-1);
-		return ccord;		
+		return coord;		
 	}
 }
