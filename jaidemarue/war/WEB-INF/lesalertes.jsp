@@ -57,7 +57,7 @@
 	<div id="map-canvas" style="float:top; position:absolute; height:63%;width:100%;z-index: 1;"></div>
 	
 	<!-- PR TESTER :::A METTRE ligne 55 (AVANT LA GOOGLE MAP DANS LE CODE) + ENLEVER onload="initialize(ok)" du body  -->
-	<a href=# onClick="alert('<%=ok%>')>CLICK ICI POUR AFFICHER LE CONTENU DU STRING</a>
+	<a href="#" onclick='alert("<%=ok%>")'>CLICK ICI POUR AFFICHER LE CONTENU DU STRING</a>
 	
 	<!-- Affichage des alertes -->      		
 	<div style="background-color:white;margin-top:40%;float:bottom; position:absolute; height:100%;width:100%;z-index:2">
