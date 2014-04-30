@@ -17,11 +17,11 @@ import javax.persistence.Entity;
 @PersistenceCapable
 public class Alerte implements Serializable{
 	
-    @PrimaryKey
-    @Persistent(valueStrategy = IdGeneratorStrategy.IDENTITY)
-    private Key key;
-    @Persistent
-    private User owner;
+	@PrimaryKey
+	@Persistent(valueStrategy = IdGeneratorStrategy.IDENTITY)
+	private Key key;
+	@Persistent
+	private User owner;
 	@Persistent
 	private String adresse;
 	@Persistent
@@ -39,6 +39,7 @@ public class Alerte implements Serializable{
 	@Persistent
 	private int vote=0;
 	@Persistent
+<<<<<<< HEAD
 	private ArrayList<User> votant = new ArrayList<User>();
 
 	public ArrayList<User> getVotant() {
@@ -49,6 +50,12 @@ public class Alerte implements Serializable{
 		votant.add(owner);
 	}
 
+=======
+	private votant = newArrayList();
+	@Persistent
+	private String toMap;
+	
+>>>>>>> aee371de3f07b668f2535e5f153b7ba3297b02c0
 	public int getVote() {
 		return vote;
 	}
@@ -105,10 +112,20 @@ public class Alerte implements Serializable{
 	public void setCommentaire(String commentaire) {
 		this.commentaire = commentaire;
 	}
-    public User getOwner(){
-        return owner;
-    }  
-    public void setOwner(User owner){
-        this.owner = owner;
-    }
+    	public User getOwner(){
+        	return owner;
+    	}  
+    	public void setOwner(User owner){
+        	this.owner = owner;
+    	}
+    	public ArrayList<User> getVotant() {
+		return votant;
+	}
+    	public void setVotant(User owner){
+        	votant.add(owner);
+    	}
+    	public void getToMap() {
+//		a=a.substring(1,a.length()-1);
+		return coord;		
+	}
 }
