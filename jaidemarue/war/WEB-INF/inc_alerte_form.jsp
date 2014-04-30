@@ -17,7 +17,7 @@
 	<option>Voiture mal garée
 	<option>Usure
 	<option>Véhicule abandonné
-	<option>Eclairage publique
+	<option>Eclairage public
 	<option>Dechets
 	<option>Chaussée détériorée
 </select>

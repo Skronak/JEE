@@ -17,7 +17,7 @@
 <body>
 	<h1> Street's guardian . com</h1>
 	<hr>
-	
+
 	<div class="go"><img src="/img/go.png" alt="" /></div>
 	<%
 		UserService userService = UserServiceFactory.getUserService();
@@ -38,6 +38,37 @@
 	<%
 		}
 	%>
+	<div style="margin-top:150px;" onclick="backtobottom();"><img src="/img/bot.png"  alt="Comment fonctionne le site" ></img><a class="backtotop" href="#" onclick="backtobottom();">&nbsp;&nbsp;Pour savoir commenter utiliser le site cliquer ici</a></div>
 	
-</body>
+	<br/><br/><div class="go"><img src="/img/post2.png" alt="" /></div>
+	<p>Pour poster une alerte vous devez d'abord vous connecter. Pour cela vous devais posséder un compte Gmail.</p>
+	<p>Si vous n'etes pas connecté le site vous proposera de le faire au moment du dépot</p></div>
+
+	<br/><br/><div class="go"><img src="/img/post.png" alt="" /></div>
+	<p>Une fois connecté vous pouvez renseigner les différents elements pour déposer une alerte.</p>
+	<p>Pour selectionner l'adresse, vous pouvez soit renseigner l'adresse directement dans le champs, soit pointer sur la carte</p>
+	<p>Une fois placé le marqueur peut etre déplacé par un tiré-glissé</p></div>
+		
+	<br/><br/><div style="margin-top:150px;" onclick="backtotop();"><img src="/img/top.png"  alt="Remonter en haut" ></img><a class="backtotop" href="#" onclick="backtotop();">&nbsp;&nbsp;Retour haut de page</a></div></body>
+
+
+<script>
+	var timeOut;
+	function backtotop() {
+		  clearTimeout(timeOut);
+		  if (document.body.scrollTop!==0 || document.documentElement.scrollTop!==0){
+		    window.scrollBy(0,5);
+		    timeOut=setTimeout('backtotop()',20);
+		  }
+		  else clearTimeout(timeOut);
+		}
+	function backtobottom() {
+		  clearTimeout(timeOut);
+		  if (document.body.scrollBottom!==0 || document.documentElement.scrollBottom!==0){
+		    window.scrollBy(0,5);
+		    timeOut=setTimeout('backtobottom()',20);
+		  }
+		  else clearTimeout(timeOut);
+		}
+</script>
 </html>

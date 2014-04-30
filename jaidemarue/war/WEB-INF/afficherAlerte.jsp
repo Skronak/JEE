@@ -6,9 +6,6 @@
     <head>
         <meta charset="utf-8" />
         <title>Affichage d'une alerte</title>
-        <link type="text/css" rel="stylesheet" href="<c:url value="/inc/style.css"/>" />
-        <link rel="stylesheet" href="//netdna.bootstrapcdn.com/bootstrap/3.1.1/css/bootstrap.min.css">
-		<link rel="stylesheet" href="//netdna.bootstrapcdn.com/bootstrap/3.1.1/css/bootstrap-theme.min.css">
     </head>
     <body>
         <div id="corps">

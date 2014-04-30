@@ -18,6 +18,7 @@ import com.rue.pmf.PMF;
 
 public class MesAlertes extends HttpServlet {
 	public void doGet( HttpServletRequest request, HttpServletResponse response ) throws ServletException, IOException{
+		//Affichage des alertes de l'utilisateur
 		response.setHeader("Expires", "Sat, 6 May 1995 12:00:00 GMT");
 	    UserService userService = UserServiceFactory.getUserService();
 	    User user = userService.getCurrentUser();
@@ -36,13 +37,13 @@ public class MesAlertes extends HttpServlet {
             finally{
                 pm.close();
             }
-
 	    }
 	    
 		this.getServletContext().getRequestDispatcher( "/WEB-INF/mesalertes.jsp" ).forward( request, response );
 	}
 	
 	public void doPost( HttpServletRequest request, HttpServletResponse response ) throws ServletException, IOException{
+		//Suppression d'une alerte
 		PersistenceManager pm =  PMF.get().getPersistenceManager();
 		try {
 			pm.currentTransaction().begin();

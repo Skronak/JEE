@@ -14,12 +14,14 @@
 <head>
 	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 	<!-- Script de googlemap-->
-	<script type="text/javascript" src="js/afficher.js"></script>
+	<script type="text/javascript" src="js/geoloc.js"></script>
 	<script type="text/javascript" src="js/jquery.js"></script>
 	<link rel="stylesheet" href="Jaidemarue.css">
 	<title>Mes alertes</title>
 </head>
 <body>
+<jsp:include page="modal.jsp"/>
+
 	<!-- Integration de la google map -->      		
 	<div id="map-canvas" style="position:absolute; height:100%;width:100%;z-index: 1;"></div>
 	
@@ -72,7 +74,7 @@
 						<img src="${alerte.image}" alt="..." ">
 					</tr>-->
 					<td>
-						<form method="post" action="/mesAlertes?id=${alerte.key}"> <br>
+						<form method="post" action="/mesAlertes?id=${alerte.key}" onsubmit="confirm('Etes vous sure de vouloir supprimer cette alerte?')"> <br>
 							<INPUT type="submit" value="Supprimer" class="btn btn-danger btn-large">
 				        </form>
 			        </td>

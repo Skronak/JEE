@@ -28,7 +28,6 @@ public final class form_alerte {
     public Alerte creerAlerte( HttpServletRequest request ) {
      UserService userService = UserServiceFactory.getUserService();
         User user = userService.getCurrentUser();
-    
      String adresse = getValeurChamp( request, CHAMP_ADRESSE );
      String type = getValeurChamp( request, CHAMP_TYPE );
      String image = getValeurChamp( request, CHAMP_IMAGE );
@@ -58,6 +57,7 @@ public final class form_alerte {
             setErreur( CHAMP_TYPE, e.getMessage() );
         }
         alerte.setType( type );
+        
         /*
         try {
             validationImage( image );

@@ -1,6 +1,7 @@
 package com.rue.bean;
 
 import java.io.Serializable;
+import java.util.ArrayList;
 import java.util.Date;
 
 import com.google.appengine.api.datastore.Key;
@@ -11,6 +12,7 @@ import javax.jdo.annotations.IdGeneratorStrategy;
 import javax.jdo.annotations.PersistenceCapable;
 import javax.jdo.annotations.Persistent;
 import javax.jdo.annotations.PrimaryKey;
+import javax.persistence.Entity;
 
 @PersistenceCapable
 public class Alerte implements Serializable{
@@ -36,7 +38,16 @@ public class Alerte implements Serializable{
 	private String coord;
 	@Persistent
 	private int vote=0;
+	@Persistent
+	private ArrayList<User> votant = new ArrayList<User>();
 
+	public ArrayList<User> getVotant() {
+		return votant;
+	}
+
+	public void setVotant(User owner) {
+		votant.add(owner);
+	}
 
 	public int getVote() {
 		return vote;

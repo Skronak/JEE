@@ -4,11 +4,12 @@ import javax.jdo.annotations.IdGeneratorStrategy;
 import javax.jdo.annotations.PersistenceCapable;
 import javax.jdo.annotations.Persistent;
 import javax.jdo.annotations.PrimaryKey;
+import javax.persistence.Entity;
 
 import com.google.appengine.api.datastore.Key;
 import com.google.appengine.api.users.User;
 
-
+@Entity
 @PersistenceCapable
 public class UserPreference {
  

@@ -1,12 +1,16 @@
 package com.rue.servlet;
 
 import java.io.IOException;
+
 import javax.servlet.ServletException;
 import javax.servlet.http.*;
+
 import com.google.appengine.api.datastore.KeyFactory;
+import com.google.appengine.api.users.User;
 import com.google.appengine.api.users.UserService;
 import com.google.appengine.api.users.UserServiceFactory;
 import com.google.appengine.api.datastore.KeyFactory;
+
 import javax.jdo.PersistenceManager;
 
 import com.rue.bean.Alerte;
@@ -14,7 +18,10 @@ import com.rue.pmf.PMF;
 
 public class AddVote extends HttpServlet {
 	
-	public void doGet( HttpServletRequest request, HttpServletResponse response ) throws ServletException, IOException{
+    UserService userService = UserServiceFactory.getUserService();
+    User user = userService.getCurrentUser();
+
+    public void doGet( HttpServletRequest request, HttpServletResponse response ) throws ServletException, IOException{
 		System.out.println("Addvote: doget");
 		PersistenceManager pm =  PMF.get().getPersistenceManager();
 		try {
@@ -23,6 +30,10 @@ public class AddVote extends HttpServlet {
 			Alerte alerte = pm.getObjectById(Alerte.class, KeyFactory.stringToKey(request.getParameter("id")));
 			System.out.println(alerte.getVote());
 			alerte.setVote();
+			
+			// Ajout de l'utilisateur dans la liste des votants
+			alerte.setVotant(user);
+			
 			System.out.println(alerte.getVote());
 			pm.currentTransaction().commit();
 		} catch (Exception ex) {

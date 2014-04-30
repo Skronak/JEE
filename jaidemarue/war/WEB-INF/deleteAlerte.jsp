@@ -13,7 +13,6 @@
     <body>
         <div id="corps">
 		    <h2 class="bg-success">Confirmation de suppression de l'alerte</h2>
-	    	<div style="text-align:center;size:20%;"><img src="/img/gok.png" alt="" /></div>
 
         </div>
     </body>

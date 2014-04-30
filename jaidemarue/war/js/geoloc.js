@@ -108,7 +108,8 @@ function TrouverAdresse() {
       strposition=strposition.replace(')', '');
       // Affichage des coordonnées dans le <span>
       document.getElementById('text_latlng').innerHTML='Coordonnees : '+strposition;
-      // Création du marqueur du lieu (épingle)       addMarker(results[0].geometry.location);
+      // Création du marqueur du lieu (épingle)
+       addMarker(results[0].geometry.location);
     } else {
       alert('Adresse introuvable: ' + status);
     }

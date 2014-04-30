@@ -46,6 +46,16 @@
 		<servlet-name>LesAlertes</servlet-name>
 		<url-pattern>/lesalertes</url-pattern>
 	</servlet-mapping>
+
+	<servlet>
+		<servlet-name>BestAlertes</servlet-name>
+		<servlet-class>com.rue.servlet.BestAlertes</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>BestAlertes</servlet-name>
+		<url-pattern>/bestalertes</url-pattern>
+	</servlet-mapping>
+	
 	<servlet>
 		<servlet-name>AddVote</servlet-name>
 		<servlet-class>com.rue.servlet.AddVote</servlet-class>
