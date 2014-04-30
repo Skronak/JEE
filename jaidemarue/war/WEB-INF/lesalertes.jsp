@@ -55,7 +55,7 @@ User user = userService.getCurrentUser();%>
 				<% } %>
 				  <div class="col-sm-6 col-md-4">
 					 <div class="thumbnail">
-				      <img src="<%=alerte.getImage()%>" alt="...">
+				      <img class="photo" src="<%=alerte.getImage()%>" alt="...">
 				      <div class="caption">
 				        <h3><%=alerte.getOwner()%></h3>
 				        <p><table>
