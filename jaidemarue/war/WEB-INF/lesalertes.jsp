@@ -30,8 +30,8 @@ User user = userService.getCurrentUser();%>
 //    			markers=markers+alerte.getAdresse();
     			markers=markers+alerte.getType();
     			markers=markers+","+alerte.getCoord().replaceAll("[//(//)]", "");
-	   			markers=markers+","+alerte.getDate();
-	   			markers=markers+","+alerte.getOwner();
+	   		markers=markers+","+alerte.getDate();
+	   		markers=markers+","+alerte.getOwner();
 	    		markers=markers+"|";
 			}
 	}
