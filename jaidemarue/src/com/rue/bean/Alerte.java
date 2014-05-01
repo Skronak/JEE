@@ -111,4 +111,8 @@ public class Alerte implements Serializable{
     public void setOwner(User owner){
         this.owner = owner;
     }
+<<<<<<< HEAD
 }
+=======
+}
+>>>>>>> 59dcccd01cb8034c2adc89466966dd717751934a
