@@ -28,7 +28,7 @@ public class BestAlertes extends HttpServlet {
 	        
 	        try{        
         		javax.jdo.Query query1 = pm.newQuery(query);
-        		query1.setRange(0,4);
+        		query1.setRange(0,5);
     	        List<Alerte> alertes = (List<Alerte>) query1.execute();
     	        request.setAttribute("alertes", alertes);
             }

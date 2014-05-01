@@ -21,15 +21,14 @@
 		        <h4 class="modal-title" id="myModalLabel">Comment utiliser Street Gardian</h4>
 		      </div>
 		      <div class="modal-body">
-		        Street Gardian est une application web permettant de signaler de possible dégradations sur la voie publique afin de les réparer.
-		        Chaque alertes posté pourra faire l'objet de +1 pour certifier de sa véracité. Losque cette alerte aura obtenu un certain montant de +1, une équipe de la municipalité interviendra.
-		      </div>
+		        Street Gardian est une application web permettant de signaler l'ensemble des incidents survenant dans votre rue.
+		        Chaque alertes posté pourra ainsi être relayée vers l'organe administratif compétent. Le site offre la possibilité de voter pour une alerte afin d'attester de sa véracité et d'accèlerer une intervention.</div>
 		      <div class="modal-body">
 		        <strong>Vous disposez de plusieurs fonctionnalités </strong>
 		        <ul>
 					<li>
 						<a href="/creerAlerte"><span class="glyphicon glyphicon-envelope"> Poster une alerte</span></a>
-						<p>Permet à un utilisateur authentifié de pouvoir poster une alerte</p>	
+						<p>Permet à un utilisateur authentifié de pouvoir poster une alerte et indiquer un incident</p>	
 					</li>	
 					<li>
 						<a href="/mesAlertes"><span class="glyphicon glyphicon-folder-open"> Mes alertes</span></a>
@@ -41,7 +40,7 @@
 					</li>
 					<li>
 						<a href="/creerAlerte"><span class="glyphicon glyphicon-user"> Login</span></a>
-						<p>Permet à un utilisateur de s'authentifié.</p>
+						<p>Permet à un utilisateur de s'authentifier et de poster une alerte.</p>
 					</li>		
 						<li>
 							<p>Rue de préférence</p>
@@ -49,9 +48,22 @@
 								<input type="text" style="width:50%;" class="form-control" placeholder="rue de préférence" name="street">
 							</p>
 							
-							<p>Permet à un utilisateur authentifié de renseigner une rue de préférence. Ainsi à chaque alerte postée dans sa rue il pourra être averti par mail. </p>
+							<p>Permet à un utilisateur authentifié de renseigner une rue de préférence.</p>
+							<p>Pour le moment nous stockons simplement votre rue mais vous pourrez recevoir des notifications très prochainement !</p>							
 						</li>
-									
+						<li>
+							<a href="/bestalertes"><span class="glyphicon glyphicon-list-alt"> TOP 5</span></a>
+							<p>Permet d'acceder aux alertes les plus populaires</p>
+						</li>
+						<br/>
+						<li>
+							<center><p>
+								Auteurs : Alienore Vale, Savary Mathilde, Couturier Guillaume, Darmon Alexandre
+							</p>
+							<p>
+								Code source: <a href="https://github.com/Skronak/JEE">Lien Github</a>
+							</p></center>
+						</li>
 				</ul>
 		      </div>
 		      <div class="modal-footer">

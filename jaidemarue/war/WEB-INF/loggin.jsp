@@ -5,6 +5,7 @@
 		<%@ page import="com.google.appengine.api.users.*"%>
 	</head>
 	<body>
+		<jsp:include page="modal.jsp"/>
 		<%UserService userService = UserServiceFactory.getUserService();%>
 		<h1>Vous devez etre connecté avant de pouvoir déposer une alerte</h1>
 		<hr>

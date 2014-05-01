@@ -16,7 +16,7 @@
 	<div style="background-color:white;float:left; position:relative; height:100%;width:36%;z-index:2">
 		<p class="bg-danger">${ form.resultat }</p>
 		<form  action="<%= blobstoreService.createUploadUrl("/alerte") %>" name="formYo" method="post" enctype="multipart/form-data">
-	               <fieldset>
+	               <fieldset style="margin-left:2;">
 	                    <c:import url="inc_alerte_form.jsp" />
 	                </fieldset>
 	                <button type="button" onclick='verifFileExtension("uploadedFile", extensionsValides)' class="btn btn-primary">

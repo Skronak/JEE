@@ -8,18 +8,22 @@
 <%@ page import="java.util.List" %>
 <%@ page import="com.google.appengine.api.datastore.Entity"%>
 <jsp:include page="menu.jsp" />
-
+<%List<Alerte> alertes = (List<Alerte>) request.getAttribute("alertes");%>
+<%String markers="";for (Alerte alerte : alertes) {
+    			markers=markers+alerte.getCoord().replaceAll("[//(//)]", "")+","+alerte.getDate()+"|";
+	}
+	%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
 	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 	<!-- Script de googlemap-->
-	<script type="text/javascript" src="js/geoloc.js"></script>
+	<script type="text/javascript" src="js/afficher2.js"></script>
 	<script type="text/javascript" src="js/jquery.js"></script>
-	<link rel="stylesheet" href="Jaidemarue.css">
+		<link rel="stylesheet" href="Jaidemarue.css">
 	<title>Mes alertes</title>
 </head>
-<body>
+<body onLoad="initialize('<%=markers%>')">
 <jsp:include page="modal.jsp"/>
 
 	<!-- Integration de la google map -->      		
@@ -27,24 +31,18 @@
 	
 	<!-- Affichage des alertes -->      		
 	<div style="background-color:white;float:left; position:relative; height:100%;width:36%;z-index:2">
-<%
-		List<Alerte> alertes = (List<Alerte>) request.getAttribute("alertes");
-		
-        if(alertes.isEmpty()) {
-%>
-<div class="alert alert-info">
+
+<%if(alertes.isEmpty()) {%>
+  <div class="alert alert-info">
   <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
   <h1>Vous n'avez deposé aucune alerte pour le moment</h1>
-</div>
-
-<%
-        } else {
-%>
+  </div>
+<%} else {%>
             <h1>Vous avez deposé les alertes suivantes :</h1>
 
             <c:forEach var="alerte" items="${alertes}" >
 	
-	            <p>
+	            <p style="margin-left:10;">
 	            <table>
 					<tr>
 						<td>Adresse:</td>
@@ -74,15 +72,13 @@
 						<img src="${alerte.image}" alt="..." ">
 					</tr>-->
 					<td>
-						<form method="post" action="/mesAlertes?id=${alerte.key}" onsubmit="confirm('Etes vous sure de vouloir supprimer cette alerte?')"> <br>
+						<form method="post" action="/mesAlertes?id=${alerte.key}" onClick="return confirm('Etes vous sure de vouloir supprimer cette alerte?')"> <br>
 							<INPUT type="submit" value="Supprimer" class="btn btn-danger btn-large">
 				        </form>
 			        </td>
 	            </table><hr>
             </c:forEach>
 	        <hr>
-<%	        
-	     }
-%>
+<%}%>	            
         </body>
 </html>

@@ -1,5 +1,18 @@
 var map;
 
+function initializeInit() {
+    var bounds = new google.maps.LatLngBounds();
+    var Nantes = new google.maps.LatLng(47.217352840714064, -1.553681373334257);
+    var mapOptions = {
+      zoom: 15,
+      center: Nantes,
+   //     styles: [{featureType:'all',stylers:[{saturation:-100},{gamma:0.50}]}],
+    };
+    // Display a map on the page
+    map = new google.maps.Map(document.getElementById("map-canvas"), mapOptions);
+    map.setTilt(45);
+}
+
 // Lancer un affichage de la map à l'affichage puis relancer avec initialize(markers)
 function initialize(markers2) {
    
@@ -41,7 +54,8 @@ function initialize(markers2) {
 	                var infoWindowContent =
 	                    '<div id="content">' +
 	                    '<h3>'+markers[i][0]+'</h3>'+
-	                    '<p> Postee le '+markers[i][3]+'<p>'+
+	                    '<p> Ouvert le '+markers[i][3]+'<p>'+
+	                    '<p> par : '+markers[i][4]+'<p>'+
 	                    '</div>';
 	                
 	                infoWindow.setContent(infoWindowContent);
@@ -73,3 +87,5 @@ function initialize(markers2) {
 	        google.maps.event.removeListener(boundsListener);
 	    });
 }
+
+google.maps.event.addDomListener(window, 'load', initializeInit());

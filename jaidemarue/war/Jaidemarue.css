@@ -151,7 +151,6 @@ div#infobulle:hover p {
 .thumbnail div {
 	width:410px;
 	height:310px;
-	background-color:rgb(245,245,245);
 }
 #mesalertes{
 	position: absolute; 
@@ -163,4 +162,23 @@ div#infobulle:hover p {
 	bottom: 10px;
 	right: 30px;
 	position:fixed;
+}
+
+.podium {
+  text-align: center;
+}
+.podium div {
+  width:100px;
+  display:inline-block;
+}
+.top {
+  background: yellow;
+  height:100px;
+}
+.left {
+  background: orange;
+  height:75px;
+}
+.right {
+  height:50px;
 }

@@ -55,6 +55,14 @@
 		<servlet-name>BestAlertes</servlet-name>
 		<url-pattern>/bestalertes</url-pattern>
 	</servlet-mapping>
+	<servlet>
+		<servlet-name>Mail</servlet-name>
+		<servlet-class>com.rue.other.Mail</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>Mail</servlet-name>
+		<url-pattern>/Mail</url-pattern>
+	</servlet-mapping>
 	
 	<servlet>
 		<servlet-name>AddVote</servlet-name>

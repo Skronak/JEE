@@ -14,62 +14,44 @@
 	<link rel="stylesheet" href="//netdna.bootstrapcdn.com/bootstrap/3.1.1/css/bootstrap-theme.min.css">
 	<script src="//netdna.bootstrapcdn.com/bootstrap/3.1.1/js/bootstrap.min.js"></script>
 	<script type="text/javascript" src="js/jquery.js"></script>
+	<link rel="stylesheet" href="Jaidemarue.css">
 	<title>Les alertes</title>
 </head>
 <body>
-	<!-- Integration de la google map -->      		
-	<div id="map-canvas" style="float:top; position:absolute; height:63%;width:100%;z-index: 1;"></div>
-	
-	<!-- Affichage des alertes -->      		
-	<div style="background-color:white;margin-top:40%;float:bottom; position:absolute; height:100%;width:100%;z-index:2">
+	<jsp:include page="modal.jsp"/>
 <%
 		List<Alerte> alertes = (List<Alerte>) request.getAttribute("alertes");
-		
         if(alertes.isEmpty()) {
 %>
 	<div class="alert alert-info">
 	  <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
 	  <h1>Il n'y a eu aucun vote pour le moment</h1>
 	</div>
+	
 	<%
 	        } else {
 	%>
-			<h1>TOP 5 des alertes les plus plébiscitées :</h1>	
-			<table id="tableau" summary="Classement Blogspot par Wikio - Mai 2010">
-			<thead>
-			
-			<tfoot>
-				<tr>
-					<td colspan="5">TOP 5 des alertes - Street's Guardian - 2014</td>
-				</tr>
-			</tfoot>
-			<tr >
-					<th scope="col">Utilisateur</th>
-					<th scope="col">Date</th>
-					<th scope="col">Adresse</th>
-					<th scope="col">Type</th>
-					<th scope="col">Commentaires</th>
-					<th scope="col">Votes</th>
-				</tr>
-			</thead>
-			
-	          <c:forEach var="alerte" items="${alertes}" >
-					<tbody>
-						<tr>
-							<td>${alerte.owner}</td>
-							<td>${alerte.date}</td>
-							<td>${alerte.adresse}</td>
-							<td>${alerte.type}</td>
-							<td>${alerte.commentaire}</td>
-							<td>${alerte.vote}</td>
-							<br>
-				</c:forEach>
-				</tbody>
-			</table>
+			<h1>TOP 5 des alertes les plus plébiscitées :</h1>
+			<hr/>	
+	<c:forEach var="alerte" items="${alertes}" varStatus="count">			
+		<div>
+		<img src="img/${count.count}.jpg" style="width: 300px; height: 250px;" />
+		</div>
+		<div>
+			<p>Proprietaire: ${alerte.owner}</p>
+			<p>Adresse  : ${alerte.adresse}</p>
+			<p>Date 	: ${alerte.date}</p>
+			<p>Type 	: ${alerte.type}</p>
+			<p>Commentaire: ${alerte.commentaire}</p>
+			<p>Votes	: ${alerte.vote}</p>		
+		</div>
+	</c:forEach>
+					</tr><jsp:include page="modal.jsp" />
+			</div>
 				
-	<%	        
-		     }
-	%>
+	<%
+						}
+					%>
 	
 	</body>
 	</html>

@@ -38,37 +38,39 @@
 	<%
 		}
 	%>
-	<div style="margin-top:150px;" onclick="backtobottom();"><img src="/img/bot.png"  alt="Comment fonctionne le site" ></img><a class="backtotop" href="#" onclick="backtobottom();">&nbsp;&nbsp;Pour savoir commenter utiliser le site cliquer ici</a></div>
+	<div>
+	<br/><div><img src="/img/bot.png"  alt="Comment fonctionne le site" ></img><div>
 	
-	<br/><br/><div class="go"><img src="/img/post2.png" alt="" /></div>
-	<p>Pour poster une alerte vous devez d'abord vous connecter. Pour cela vous devais posséder un compte Gmail.</p>
-	<p>Si vous n'etes pas connecté le site vous proposera de le faire au moment du dépot</p></div>
+	<br/><br/><div class="go"></div>
+	<center><p> Ce site permet de déclarer des incidents sur la ville de Nantes avec une photo associée</p>
+	<p>afin de relier l'information vers l'organe administratif compétent</p></center>
+	
+	<br/><br/>
+	<h3>1/ Poster une alerte</h3>
+	<p> Pour poster une alerte, vous devrez d'abord vous connecter avec votre compte Gmail.</p>
+	<p> Si vous n'etes pas connecté le site vous proposera de le faire au moment du dépot</p></div>
+	<img src="/img/post2.png" alt="" />	
 
-	<br/><br/><div class="go"><img src="/img/post.png" alt="" /></div>
-	<p>Une fois connecté vous pouvez renseigner les différents elements pour déposer une alerte.</p>
-	<p>Pour selectionner l'adresse, vous pouvez soit renseigner l'adresse directement dans le champs, soit pointer sur la carte</p>
-	<p>Une fois placé le marqueur peut etre déplacé par un tiré-glissé</p></div>
-		
-	<br/><br/><div style="margin-top:150px;" onclick="backtotop();"><img src="/img/top.png"  alt="Remonter en haut" ></img><a class="backtotop" href="#" onclick="backtotop();">&nbsp;&nbsp;Retour haut de page</a></div></body>
-
-
-<script>
-	var timeOut;
-	function backtotop() {
-		  clearTimeout(timeOut);
-		  if (document.body.scrollTop!==0 || document.documentElement.scrollTop!==0){
-		    window.scrollBy(0,5);
-		    timeOut=setTimeout('backtotop()',20);
-		  }
-		  else clearTimeout(timeOut);
-		}
-	function backtobottom() {
-		  clearTimeout(timeOut);
-		  if (document.body.scrollBottom!==0 || document.documentElement.scrollBottom!==0){
-		    window.scrollBy(0,5);
-		    timeOut=setTimeout('backtobottom()',20);
-		  }
-		  else clearTimeout(timeOut);
-		}
-</script>
+	<br/><br/>
+	<img src="/img/post.jpg" alt="" />
+	<p> Une fois connecté vous pouvez renseigner les différents elements pour déposer une alerte.</p>
+	<p> Pour selectionner l'adresse, vous pouvez soit renseigner l'adresse directement dans le champs, soit pointer sur la carte</p>
+	<p> Une fois placé le marqueur peut etre déplacé par un tiré-glissé</p></div>
+	
+	<br/><br/>
+	<h3>2/ Consulter et modifier ses alertes</h3>
+	<img src="/img/CCC.jpg" alt="" />
+	<p> L'onglet "mes alertes" vous permet de visualiser l'ensemble de vos alertes</p>
+	<p> Vous pouvez également en supprimer une une ou plusieurs</p>
+	
+	<br/><br/>
+	<h3>3/ Consulter toutes les alertes</h3>	
+	<img src="/img/BBB.jpg" alt="" />
+	<p> L'onglet toutes les alertes vous permet de consulter l'ensemble des alertes encore actives</p>
+	<p> Vous pouvez voter pour chacune d'entre elles une fois en cliquant dans le "+1" présent dans chaque</p>
+	<br/><br/>
+	<center><p>D'autres fonctionnalités vous attendents mais nous vous laissons les decouvrir par vous même !</p></center>
+	<a href=# ><img src="/img/top.png" alt=""></img>Retour en haut</a>	
+	</div>
+	
 </html>
