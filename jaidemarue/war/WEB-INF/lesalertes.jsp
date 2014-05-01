@@ -13,16 +13,9 @@ User user = userService.getCurrentUser();%>
 <html>
 <head>	
 	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<<<<<<< HEAD
 	<link rel="stylesheet" href="Jaidemarue.css">
 	<script type="text/javascript" src="js/afficher.js"></script>
 	<script type="text/javascript" src="js/jquery.js"></script>
-=======
-	<link rel="stylesheet" href="war/Jaidemarue.css">
-	<script type="text/javascript" src="js/afficher.js"></script>
-	<script type="text/javascript" src="js/jquery.js"></script>
-
->>>>>>> 59dcccd01cb8034c2adc89466966dd717751934a
 	<title>Les alertes</title>
 </head>
 	<% 
@@ -36,13 +29,8 @@ User user = userService.getCurrentUser();%>
 //    			markers=markers+alerte.getAdresse();
     			markers=markers+alerte.getType();
     			markers=markers+","+alerte.getCoord().replaceAll("[//(//)]", "");
-<<<<<<< HEAD
 	   			markers=markers+","+alerte.getDate();
 	   			markers=markers+","+alerte.getOwner();
-=======
-	   		markers=markers+","+alerte.getDate();
-	   		markers=markers+","+alerte.getOwner();
->>>>>>> 59dcccd01cb8034c2adc89466966dd717751934a
 	    		markers=markers+"|";
 			}
 	}%>
@@ -64,13 +52,8 @@ User user = userService.getCurrentUser();%>
 				<div class="row">
 				<% } %>
 				  <div class="col-sm-6 col-md-4">
-<<<<<<< HEAD
 					 <div class="thumbnail" style="width:410px; height:630px;">
 				      <img class="photo" style="width:410px; height:300px;" src="<%=alerte.getImage()%>" alt="...">
-=======
-					 <div class="thumbnail">
-				      <img class="photo" src="<%=alerte.getImage()%>" alt="...">
->>>>>>> 59dcccd01cb8034c2adc89466966dd717751934a
 				      <div class="caption">
 				        <h3><%=alerte.getOwner()%></h3>
 				        <p><table>
